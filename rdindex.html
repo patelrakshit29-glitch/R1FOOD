@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OYO Style Hotel Booking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+    }
+    header {
+      background: #ee2e24;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .search-box {
+      padding: 20px;
+      text-align: center;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .search-box input {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .search-box button {
+      padding: 10px 15px;
+      background: #ee2e24;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .hotel-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .hotel-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .hotel-card:hover {
+      transform: scale(1.03);
+    }
+    .hotel-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .hotel-info {
+      padding: 15px;
+    }
+    .hotel-info h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .hotel-info p {
+      margin: 5px 0;
+      color: gray;
+    }
+    .hotel-info button {
+      background: #ee2e24;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>MyOYO - Hotel Booking</header>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search city or hotel...">
+    <button onclick="searchHotel()">Search</button>
+  </div>
+
+  <div class="hotel-list" id="hotelList">
+    <div class="hotel-card">
+      <img src="https://picsum.photos/400/200?random=1" alt="Hotel">
+      <div class="hotel-info">
+        <h3>Hotel Sunshine</h3>
+        <p>Location: Delhi</p>
+        <p>?1200 / night</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    <div class="hotel-card">
+      <img src="https://picsum.photos/400/200?random=2" alt="Hotel">
+      <div class="hotel-info">
+        <h3>Sea View Resort</h3>
+        <p>Location: Goa</p>
+        <p>?2000 / night</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+    <div class="hotel-card">
+      <img src="https://picsum.photos/400/200?random=3" alt="Hotel">
+      <div class="hotel-info">
+        <h3>Royal Palace</h3>
+        <p>Location: Jaipur</p>
+        <p>?1800 / night</p>
+        <button>Book Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function searchHotel() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let hotels = document.getElementById("hotelList").getElementsByClassName("hotel-card");
+      
+      for (let i = 0; i < hotels.length; i++) {
+        let text = hotels[i].innerText.toLowerCase();
+        if (text.includes(input)) {
+          hotels[i].style.display = "block";
+        } else {
+          hotels[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
